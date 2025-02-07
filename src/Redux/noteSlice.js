@@ -41,7 +41,7 @@ export const { setNotes, setLoading, setError, addNote, updateNote, deleteNote }
 export const fetchNotes = () => async (dispatch) => {
   dispatch(setLoading(true));
   try {
-    const response = await fetch('http://localhost:8080/getdata');
+    const response = await fetch('https://codebinx.onrender.com/getdata');
     const data = await response.json();
     dispatch(setNotes(data));
   } catch (err) {
@@ -54,7 +54,7 @@ export const fetchNotes = () => async (dispatch) => {
 // Add New Note
 export const addNewNote = (note) => async (dispatch) => {
   try {
-    const response = await fetch('http://localhost:8080/add', {
+    const response = await fetch('https://codebinx.onrender.com/add', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(note),
@@ -73,7 +73,7 @@ export const addNewNote = (note) => async (dispatch) => {
 // Update Note
 export const updateNoteInDB = (note) => async (dispatch) => {
   try {
-    const response = await fetch(`http://localhost:8080/update/${note.documentId}`, {
+    const response = await fetch(`https://codebinx.onrender.com/update/${note.documentId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title: note.title, content: note.content }),
@@ -92,7 +92,7 @@ export const updateNoteInDB = (note) => async (dispatch) => {
 // Delete Note
 export const deleteNoteFromDB = (documentId) => async (dispatch) => {
   try {
-    const response = await fetch(`http://localhost:8080/delete/${documentId}`, {
+    const response = await fetch(`https://codebinx.onrender.com/delete/${documentId}`, {
       method: 'DELETE',
     });
 
